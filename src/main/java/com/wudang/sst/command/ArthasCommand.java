@@ -2,6 +2,7 @@ package com.wudang.sst.command;
 
 import com.google.common.collect.Lists;
 import com.wudang.sst.common.utils.ClipboardUtils;
+import com.wudang.sst.common.utils.SstStringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.shell.CompletionContext;
 import org.springframework.shell.CompletionProposal;
@@ -40,7 +41,7 @@ public class ArthasCommand {
      * @param methodReference
      * @return
      */
-    @ShellMethod(value = "trace 某个方法的调用栈", key = {"trace"})
+    @ShellMethod(value = "trace 某个方法的调用栈", key = {"asTrace"})
     public String asTrace(@ShellOption(help = "idea  copy class method reference ", value = {"-m"}, defaultValue = "") String methodReference,
                           @ShellOption(help = "运行执行的最大次数", value = {"-n"}, defaultValue = "5") Integer n) {
         if (StringUtils.isEmpty(methodReference)) {
@@ -60,7 +61,7 @@ public class ArthasCommand {
         return formatStr;
     }
 
-    @ShellMethod(value = "watch 某个方法的入参返回值", key = {"watch"})
+    @ShellMethod(value = "watch 某个方法的入参返回值", key = {"asWatch"})
     public String asWatch(@ShellOption(help = "idea  copy class method reference ", value = {"-m"}, defaultValue = "") String methodReference,
                           @ShellOption(help = "运行执行的最大次数", value = {"-n"}, defaultValue = "5") Integer n,
                           @ShellOption(help = "查看参数值的最大深度", value = {"-x"}, defaultValue = "5") Integer x,
@@ -83,6 +84,33 @@ public class ArthasCommand {
 
         buffer.append(" -n ").append(n);
         buffer.append(" -x ").append(x);
+
+        String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, buffer.toString() + " ");
+        ClipboardUtils.setClipboardString(buffer.toString());
+        return formatStr;
+    }
+
+    @ShellMethod(value = "获取某个字类的静态字段或者变量\n " +
+            "java.lang.Integer#MIN_VALUE  -> '@j...er@MIN_VALUE\n" +
+            "..#toHexString (需要自己添加括号)   -> '@..@toHexString'\n" +
+            "..#toUnsignedString(int, int)   -> '..@toUnsignedString(int, int)", key = {"asStatic"})
+    public String asOgnlStatic(@ShellOption(help = "idea  copy class static method、field reference ", value = {"-m"}) String methodReference,
+                               @ShellOption(help = "查看参数值的最大深度", value = {"-x"}, defaultValue = "5") Integer x) {
+        if (StringUtils.isEmpty(methodReference)) {
+            methodReference = ClipboardUtils.getClipboardString();
+        }
+        if (!StringUtils.hasText(methodReference) || !methodReference.contains("#")) {
+            return "请使用idea 复制类方法、变量信息";
+        }
+        //java.lang.Integer#MIN_VALUE 常量复制的效果  -> '@java.lang.Integer@MIN_VALUE'
+        //java.lang.Integer#toHexString 方法效果  需要自己添加括号   -> '@java.lang.Integer@toHexString'
+        //java.lang.Integer#toUnsignedString(int, int) 方法效果,添加值  -> '@java.lang.Integer@toUnsignedString(int, int)'
+
+        StringBuilder buffer = new StringBuilder("ognl");
+        buffer.append(" -x ").append(x).append(" '@");
+        methodReference = SstStringUtils.replaceLast(methodReference, "#", "@");
+        buffer.append(methodReference).append("'");
+
 
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, buffer.toString() + " ");
         ClipboardUtils.setClipboardString(buffer.toString());

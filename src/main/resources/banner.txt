@@ -6,5 +6,6 @@
     exit or quit 退出
     tab 自动补全
   > arthas
-    watch= (watch + copy  method reference to 剪切板(or watch test#complete)) ->watch test complete '{params,returnObject,throwExp}' -n 5 -x 5  已复制到剪切板　
-    trace= (trace + copy  method reference to 剪切板(or trace test#complete)) ->trace test complete  -n 5   已复制到剪切板
+    asWatch= (watch +(方法） 剪切板(or watch test#complete)) ->watch test complete '{params,returnObject,throwExp}' -n 5 -x 5  已复制到剪切板　
+    asTrace= (trace +（方法）剪切板(or trace test#complete)) ->trace test complete  -n 5   已复制到剪切板
+    asStatic=(asStatic +（静态方法+变量）剪切板(or asStatic java.lang.Integer#toString(int, int)))ognl -x 5 '@java.lang.Integer@toString(int, int)'
