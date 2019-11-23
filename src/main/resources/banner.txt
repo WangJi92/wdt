@@ -1,1 +1,10 @@
- ${spring.application.name}-武当山-命令行工具                　　
+ ${wudang.name}-武当山-命令行工具
+  > keymap
+    ctrl+a = 进入当前行光标最前
+    ctrl+e = 进入当前行光标最后
+    ctrl+u = 清除当前行的光标
+    exit or quit 退出
+    tab 自动补全
+  > arthas
+    watch= (watch + copy  method reference to 剪切板(or watch test#complete)) ->watch test complete '{params,returnObject,throwExp}' -n 5 -x 5  已复制到剪切板　
+    trace= (trace + copy  method reference to 剪切板(or trace test#complete)) ->trace test complete  -n 5   已复制到剪切板
