@@ -76,7 +76,7 @@ public class ArthasCommand {
         StringBuilder buffer = new StringBuilder(WATCH);
         buffer.append(" ").append(methodReference);
         if (StringUtils.isEmpty(express)) {
-            buffer.append(" ").append("'{params,returnObject,throwExp}'");
+            buffer.append(" ").append("'{params,returnObj,throwExp}'");
         } else {
             buffer.append(" ").append(express);
         }
@@ -112,11 +112,11 @@ public class ArthasCommand {
             List<CompletionProposal> completionProposals = Lists.newArrayList();
             CompletionProposal completionProposal = null;
 
-            completionProposal = new CompletionProposal("'{target,returnObject}'");
+            completionProposal = new CompletionProposal("'{target,returnObj}'");
             completionProposal.dontQuote(true).description("查看目标类、返回值");
             completionProposals.add(completionProposal);
 
-            completionProposal = new CompletionProposal(" returnObject'");
+            completionProposal = new CompletionProposal(" returnObj'");
             completionProposal.dontQuote(true).description("查看返回值");
             completionProposals.add(completionProposal);
 
@@ -124,7 +124,7 @@ public class ArthasCommand {
             completionProposal.dontQuote(true).description("查看入参");
             completionProposals.add(completionProposal);
 
-            completionProposal = new CompletionProposal("'{params,returnObject,throwExp}'");
+            completionProposal = new CompletionProposal("'{params,returnObj,throwExp}'");
             completionProposal.dontQuote(true).description("查看入参、返回值、异常");
             completionProposals.add(completionProposal);
 
