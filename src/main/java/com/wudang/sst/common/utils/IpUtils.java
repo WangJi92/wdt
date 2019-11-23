@@ -1,7 +1,6 @@
 package com.wudang.sst.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.net.util.IPAddressUtil;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -10,12 +9,12 @@ import java.util.Enumeration;
 
 /**
  * 获取本机ip
+ *
  * @author jet
  * @date 20-11-2019
  */
 @Slf4j
 public class IpUtils {
-
 
     public static String getIpAddress() {
         log.error("test。。");
@@ -37,7 +36,7 @@ public class IpUtils {
                 }
             }
         } catch (Exception e) {
-            log.error("getIpAddress error",e);
+            log.error("getIpAddress error", e);
         }
         return "";
 
