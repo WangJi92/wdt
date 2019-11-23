@@ -1,4 +1,4 @@
-package com.wudang.sst;
+package com.wudang.wdt;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

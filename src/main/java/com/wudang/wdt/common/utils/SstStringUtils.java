@@ -1,4 +1,4 @@
-package com.wudang.sst.common.utils;
+package com.wudang.wdt.common.utils;
 
 import org.springframework.util.StringUtils;
 

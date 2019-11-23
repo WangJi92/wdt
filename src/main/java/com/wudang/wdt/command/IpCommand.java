@@ -1,7 +1,7 @@
-package com.wudang.sst.command;
+package com.wudang.wdt.command;
 
-import com.wudang.sst.common.utils.ClipboardUtils;
-import com.wudang.sst.common.utils.IpUtils;
+import com.wudang.wdt.common.utils.ClipboardUtils;
+import com.wudang.wdt.common.utils.IpUtils;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;

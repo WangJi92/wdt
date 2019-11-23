@@ -8,15 +8,16 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sst</groupId>
-    <artifactId>sst</artifactId>
+    <groupId>com.wdt</groupId>
+    <artifactId>wdt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sst</name>
-    <description>this is a utils for dev project</description>
+    <name>wdt</name>
+    <description>当前工具是为了方便排除编程者使用各种命令行来处理问题</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -64,6 +65,7 @@
     </dependencies>
 
     <build>
+        <finalName>wdt</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package com.wudang.sst;
+package com.wudang.wdt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

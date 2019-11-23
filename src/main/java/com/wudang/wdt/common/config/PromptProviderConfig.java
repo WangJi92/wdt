@@ -1,4 +1,4 @@
-package com.wudang.sst.common.config;
+package com.wudang.wdt.common.config;
 
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;

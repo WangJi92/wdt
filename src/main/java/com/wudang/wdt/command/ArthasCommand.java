@@ -1,8 +1,8 @@
-package com.wudang.sst.command;
+package com.wudang.wdt.command;
 
 import com.google.common.collect.Lists;
-import com.wudang.sst.common.utils.ClipboardUtils;
-import com.wudang.sst.common.utils.SstStringUtils;
+import com.wudang.wdt.common.utils.ClipboardUtils;
+import com.wudang.wdt.common.utils.SstStringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.shell.CompletionContext;
 import org.springframework.shell.CompletionProposal;

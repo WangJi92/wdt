@@ -1,4 +1,4 @@
-package com.wudang.sst.common.utils;
+package com.wudang.wdt.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
