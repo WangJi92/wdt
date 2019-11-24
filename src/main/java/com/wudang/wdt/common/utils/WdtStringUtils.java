@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
  * @author jet
  * @date 23-11-2019
  */
-public class SstStringUtils extends StringUtils {
+public class WdtStringUtils extends StringUtils {
 
     /**
      * 替换最后一个字符

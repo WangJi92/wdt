@@ -2,7 +2,7 @@ package com.wudang.wdt.command;
 
 import com.google.common.collect.Lists;
 import com.wudang.wdt.common.utils.ClipboardUtils;
-import com.wudang.wdt.common.utils.SstStringUtils;
+import com.wudang.wdt.common.utils.WdtStringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.shell.CompletionContext;
 import org.springframework.shell.CompletionProposal;
@@ -108,7 +108,7 @@ public class ArthasCommand {
 
         StringBuilder buffer = new StringBuilder("ognl");
         buffer.append(" -x ").append(x).append(" '@");
-        methodReference = SstStringUtils.replaceLast(methodReference, "#", "@");
+        methodReference = WdtStringUtils.replaceLast(methodReference, "#", "@");
         buffer.append(methodReference).append("'");
 
 
