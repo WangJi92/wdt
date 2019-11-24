@@ -1,12 +1,14 @@
 package com.wudang.wdt.command;
 
 import com.google.common.collect.Lists;
+import com.wudang.wdt.command.table.ChinesSizeConstraints;
 import com.wudang.wdt.common.utils.ClipboardUtils;
 import com.wudang.wdt.common.utils.WdtStringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.shell.CompletionContext;
 import org.springframework.shell.CompletionProposal;
 import org.springframework.shell.standard.*;
+import org.springframework.shell.table.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -127,6 +129,24 @@ public class ArthasCommand {
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, AS_INSTALL);
         ClipboardUtils.setClipboardString(AS_INSTALL);
         return formatStr;
+    }
+
+    @ShellMethod(value = "arthas 学习", key = {"arthasTable"})
+    @SuppressWarnings("unchecked")
+    public Table arthasTable() {
+
+        TableModelBuilder builder = new TableModelBuilder<String>();
+        builder.addRow().addValue("arthas  ").addValue("备注").addValue("扩展");
+        builder.addRow().addValue("special ognl use").addValue("https://github.com/alibaba/arthas/issues/71").addValue("special ognl ");
+        builder.addRow().addValue("ognl https://commons.apache.org/proper/commons-ognl/language-guide.html ").addValue("https://alibaba.github.io/arthas/ognl.html ").addValue("officialLink");
+        builder.addRow().addValue("tt get spring context").addValue(" https://github.com/alibaba/arthas/issues/482 ").addValue(" ");
+
+
+        TableModel tableModel = builder.build();
+
+        TableBuilder tableBuilder = new TableBuilder(tableModel);
+        tableBuilder.on(CellMatchers.table()).addSizer(new ChinesSizeConstraints()).and();
+        return tableBuilder.addFullBorder(BorderStyle.fancy_light_triple_dash).build();
     }
 
     /**
