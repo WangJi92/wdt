@@ -124,7 +124,7 @@ public class ArthasCommand {
      *
      * @return
      */
-    @ShellMethod(value = "arthas 安装脚本", key = {"as-install"})
+    @ShellMethod(value = "arthas 安装脚本", key = {"asInstall"})
     public String asInstallShell() {
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, AS_INSTALL);
         ClipboardUtils.setClipboardString(AS_INSTALL);

@@ -23,6 +23,7 @@ public class SystemCommand {
 
     /**
      * 调用系统命令
+     *
      * @param command
      * @throws IOException
      */
@@ -37,5 +38,12 @@ public class SystemCommand {
             line = input.readLine();
         }
     }
+
+    @ShellMethod(key = {"ls"}, value = "系统ls")
+    public void ls()
+            throws IOException {
+        this.systemCommand("ls -al");
+    }
+
 
 }
