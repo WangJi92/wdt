@@ -16,6 +16,6 @@ public class PromptProviderConfig {
 
     @Bean
     public PromptProvider myPromptProvider() {
-        return () -> new AttributedString("sst$ ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
+        return () -> new AttributedString("wdt$ ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
     }
 }
