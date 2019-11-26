@@ -43,14 +43,14 @@ public class ArthasCommand {
      * @param methodReference
      * @return
      */
-    @ShellMethod(value = "trace 某个方法的调用栈", key = {"asTrace"})
+    @ShellMethod(value = "trace 某个方法的调用栈", key = {"arthasTrace", "at"})
     public String asTrace(@ShellOption(help = "idea  copy class method reference ", value = {"-m"}, defaultValue = "") String methodReference,
                           @ShellOption(help = "运行执行的最大次数", value = {"-n"}, defaultValue = "5") Integer n) {
         if (StringUtils.isEmpty(methodReference)) {
             methodReference = ClipboardUtils.getClipboardString();
         }
         if (StringUtils.isEmpty(methodReference) || !methodReference.contains("#")) {
-            return "请使用dea 复制类方法信息";
+            return "请使用idea 复制类方法信息";
         }
         methodReference = methodReference.replaceFirst("#", " ");
 
@@ -63,7 +63,7 @@ public class ArthasCommand {
         return formatStr;
     }
 
-    @ShellMethod(value = "watch 某个方法的入参返回值", key = {"asWatch"})
+    @ShellMethod(value = "watch 某个方法的入参返回值", key = {"arthasWatch", "aw"})
     public String asWatch(@ShellOption(help = "idea  copy class method reference ", value = {"-m"}, defaultValue = "") String methodReference,
                           @ShellOption(help = "运行执行的最大次数", value = {"-n"}, defaultValue = "5") Integer n,
                           @ShellOption(help = "查看参数值的最大深度", value = {"-x"}, defaultValue = "5") Integer x,
@@ -92,11 +92,8 @@ public class ArthasCommand {
         return formatStr;
     }
 
-    @ShellMethod(value = "获取某个字类的静态字段或者变量\n " +
-            "java.lang.Integer#MIN_VALUE  -> '@j...er@MIN_VALUE\n" +
-            "..#toHexString (需要自己添加括号)   -> '@..@toHexString'\n" +
-            "..#toUnsignedString(int, int)   -> '..@toUnsignedString(int, int)", key = {"asStatic"})
-    public String asOgnlStatic(@ShellOption(help = "idea  copy class static method、field reference ", value = {"-m"}) String methodReference,
+    @ShellMethod(value = "获取类的静态字段,变量(-c classLoaderHash 默认值 SystemClassLoader）[ sc -d com.test 获取 classLoaderHash 值]", key = {"arthasStatic","as"})
+    public String asOgnlStatic(@ShellOption(help = "idea  copy class static method、field reference ", value = {"-m"},defaultValue = "") String methodReference,
                                @ShellOption(help = "查看参数值的最大深度", value = {"-x"}, defaultValue = "5") Integer x) {
         if (StringUtils.isEmpty(methodReference)) {
             methodReference = ClipboardUtils.getClipboardString();
@@ -116,6 +113,8 @@ public class ArthasCommand {
 
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, buffer.toString() + " ");
         ClipboardUtils.setClipboardString(buffer.toString());
+        formatStr = formatStr + "\"获取类的静态字段,变量(-c classLoaderHash 默认值 SystemClassLoader）" +
+                "\"[可以通过 sc -d com.test 获取 classLoaderHash 值]";
         return formatStr;
     }
 
@@ -124,7 +123,7 @@ public class ArthasCommand {
      *
      * @return
      */
-    @ShellMethod(value = "arthas 安装脚本", key = {"asInstall"})
+    @ShellMethod(value = "arthas 安装脚本", key = {"arthasInstall","ai"})
     public String asInstallShell() {
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, AS_INSTALL);
         ClipboardUtils.setClipboardString(AS_INSTALL);
