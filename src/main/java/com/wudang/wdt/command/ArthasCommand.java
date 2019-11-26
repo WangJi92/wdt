@@ -67,7 +67,7 @@ public class ArthasCommand {
     public String asWatch(@ShellOption(help = "idea  copy class method reference ", value = {"-m"}, defaultValue = "") String methodReference,
                           @ShellOption(help = "运行执行的最大次数", value = {"-n"}, defaultValue = "5") Integer n,
                           @ShellOption(help = "查看参数值的最大深度", value = {"-x"}, defaultValue = "5") Integer x,
-                          @ShellOption(help = "表达式", value = {"-express"}, defaultValue = "'{params,returnObject,throwExp}'", valueProvider = WatchValuesProvider.class) String express) {
+                          @ShellOption(help = "表达式", value = {"-express"}, defaultValue = "'{params,returnObj,throwExp}'", valueProvider = WatchValuesProvider.class) String express) {
         if (StringUtils.isEmpty(methodReference)) {
             methodReference = ClipboardUtils.getClipboardString();
         }
