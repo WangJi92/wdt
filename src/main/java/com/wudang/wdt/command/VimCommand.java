@@ -29,6 +29,9 @@ public class VimCommand {
         builder.addRow().addValue("ctrl+r ").addValue("resume was undo in previous step").addValue(" ");
         builder.addRow().addValue("U ").addValue("undo all actions on the current line").addValue(" ");
 
+        builder.addRow().addValue("cursor select delete").addValue("光标删除").addValue(" ");
+        builder.addRow().addValue("1. v enter visual mode").addValue("2. move up course..you like").addValue("3.enter d ,delete");
+
         TableModel tableModel = builder.build();
         TableBuilder tableBuilder = new TableBuilder(tableModel);
         tableBuilder.on(CellMatchers.table()).addSizer(new ChinesSizeConstraints()).and();
