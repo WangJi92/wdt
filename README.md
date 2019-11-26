@@ -23,3 +23,6 @@ java -jar target/wdt.jar
 * tab 自动补全                
 * help  帮助
 * help+command 帮助具体的命令
+
+## 开发工具
+* spring shell 实现命令行 [官方文档](https://docs.spring.io/spring-shell/docs/2.0.0.RELEASE/reference/htmlsingle/#extending-spring-shell)
