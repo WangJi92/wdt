@@ -1,11 +1,10 @@
  ${wudang.name}-武当山-命令行工具
   > keymap
-    ctrl+a = 进入当前行光标最前
-    ctrl+e = 进入当前行光标最后
-    ctrl+u = 清除当前行的光标
-    exit or quit 退出
-    tab 自动补全
+    ctrl+a = 进入当前行光标最前   ctrl+e = 进入当前行光标最后
+    ctrl+u = 清除当前行的光标     exit or quit 退出
+    tab 自动补全                 help  帮助
+    help+command 帮助具体的命令
   > arthas
-    asWatch= (watch +(方法） 剪切板(or watch test#complete)) ->watch test complete '{params,returnObject,throwExp}' -n 5 -x 5  已复制到剪切板　
-    asTrace= (trace +（方法）剪切板(or trace test#complete)) ->trace test complete  -n 5   已复制到剪切板
-    asStatic=(asStatic +（静态方法+变量）剪切板(or asStatic "java.lang.Integer#toString(int, int)"))ognl -x 5 '@java.lang.Integer@toString(int, int)'
+    aw= (aw 剪切板(or aw test#complete)) ->watch test complete '{params,returnObject,throwExp}' -n 5 -x 5  已复制到剪切板　
+    at= (at +（方法）剪切板(or at test#complete)) ->trace test complete  -n 5   已复制到剪切板
+    as=(as+（静态方法+变量）剪切板(or as "java.lang.Integer#toString(int, int)"))-> ognl -x 5 '@java.lang.Integer@toString(int, int)'
