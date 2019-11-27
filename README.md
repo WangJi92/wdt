@@ -46,9 +46,40 @@ curl -sk https://arthas.gitee.io/arthas-boot.jar -o ~/.arthas-boot.jar  && echo 
  如下就是效果
 ![image](https://user-images.githubusercontent.com/20874972/69729819-f2217400-1161-11ea-81fe-2e32e9274304.png)
 
-  
+## 目前支持
+```xml
+arthas
+        ai, arthasInstall: arthas 安装脚本
+        arthasStatic, as: 获取类的静态字段,变量(-c classLoaderHash 默认值 SystemClassLoader）[ sc -d com.test 获取 classLoaderHash 值]
+        arthasTable: arthas 学习
+        arthasTrace, at: trace 某个方法的调用栈
+        arthasWatch, aw: watch 某个方法的入参返回值
 
-### 常用命令
+ip
+        ip: 获取本机ip地址信息
+
+jvm
+        jvmTable: jvmTable 导航
+
+log
+        logTable: logTable 导航
+
+ognl
+        ognlTable: ognl 学习
+
+system
+        ls: 系统ls
+        s, system: 输出系统参数eg 'ls -la'
+
+vim
+        vimTableCopyPaste: vimTableCopyPaste  复制粘贴
+        vimTableDeleteUndo: vimTable 删除撤销
+        vimTableFind: vimTable Find  查找
+        vimTableManyLineEdit: vimTableManyLineEdit 多行编辑
+        vimTableReplace: vimTableReplace 替换
+```
+
+## 常用命令
 * ctrl+a = 进入当前行光标最前   
 * ctrl+e = 进入当前行光标最后
 * ctrl+u = 清除当前行的光标     
