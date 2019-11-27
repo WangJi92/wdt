@@ -13,7 +13,7 @@ import org.springframework.shell.table.*;
  * @date 26-11-2019
  */
 @ShellComponent
-@ShellCommandGroup(value = "vim")
+@ShellCommandGroup(value = "jvm")
 public class JvmCommand {
 
 
@@ -30,7 +30,7 @@ public class JvmCommand {
         builder.addRow().addValue("jstack -l -F  pid").addValue("").addValue("to force a thread dump");
         builder.addRow().addValue("jstack -l -m  pid").addValue(" ").addValue("to print both java and native frames (mixed mode)");
         builder.addRow().addValue("jmap -dump:live,format=b,file=/tmp/livedump.hprof pid").addValue("").addValue("https://www.jianshu.com/p/a4ad53179df3");
-        builder.addRow().addValue("jmap -dump:format=b,file=/temp/dump.phrof pid").addValue("").addValue(" ");
+        builder.addRow().addValue("jmap -dump:format=b,file=/temp/dump.hprof pid").addValue("").addValue(" ");
         builder.addRow().addValue("jmap -heap pid").addValue("memory usage information of each memory area").addValue("内存占用统计");
         builder.addRow().addValue("jmap -histo:live pid").addValue("show statistics for objects in the heap").addValue("活着对象统计");
         builder.addRow().addValue("jmap -clstats pid").addValue("to print class loader statistics").addValue("类加载器信息");
