@@ -26,7 +26,8 @@ wdt 做了一些什么？
 
 ### ai 安装 arthas
   剪切板中复制到了如下的命令,执行一下，安装arthas，通过as.sh 启动 linux 环境
-  ![image](https://user-images.githubusercontent.com/20874972/69729157-d10c5380-1160-11ea-8cfd-caa38af8c0df.png)
+ ![image](https://user-images.githubusercontent.com/20874972/69730612-5a248a00-1163-11ea-9b5e-43b7f322d035.png)
+
 ```bash
 curl -sk https://arthas.gitee.io/arthas-boot.jar -o ~/.arthas-boot.jar  && echo "alias as.sh='java -jar ~/.arthas-boot.jar --repo-mirror aliyun --use-http'" >> ~/.bashrc && source ~/.bashrc
 ```
