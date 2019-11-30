@@ -10,6 +10,15 @@ java -jar target/wdt.jar
 ```bash
 ./install.sh
 ```
+## 视频教程
+* 简单介绍spring shell
+[1、begin-spring-shell](https://v.youku.com/v_show/id_XNDQ1Mzg4MzQ0MA==.html)
+* spring shell 官方文档简述
+[2、introduce-spring-shell-official-doc](https://v.youku.com/v_show/id_XNDQ1MzkyODYxMg==.html)
+* 武当山命令行使用
+[3、use-spring-shell-solve-question 武当山命令行](https://v.youku.com/v_show/id_XNDQ1Mzk4OTcyMA==.html)
+
+
 
 ## 使用
 wdt 做了一些什么？
