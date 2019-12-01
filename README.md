@@ -17,7 +17,8 @@ java -jar target/wdt.jar
 [2、introduce-spring-shell-official-doc](https://v.youku.com/v_show/id_XNDQ1MzkyODYxMg==.html)
 * 武当山命令行使用
 [3、use-spring-shell-solve-question 武当山命令行](https://v.youku.com/v_show/id_XNDQ1Mzk4OTcyMA==.html)
-
+* spring shell 源码解析
+[4、spring-shell-源码解析](http://v.youku.com/v_show/id_XNDQ1NDEyMTgyNA==.html)
 
 
 ## 使用
