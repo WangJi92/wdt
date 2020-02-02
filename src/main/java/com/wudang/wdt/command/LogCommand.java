@@ -27,7 +27,7 @@ public class LogCommand {
         builder.addRow().addValue(" less application.log ").addValue("/text ?text").addValue(" ");
         builder.addRow().addValue(" grep -C 10 -n \"ERROR\" application.log").addValue("grep error").addValue(" ");
         builder.addRow().addValue(" grep -C 10 -n -E \"ERROR|WARN\" application.log").addValue("grep regx").addValue(" ");
-
+        builder.addRow().addValue("cat application.log |grep -v INFO ").addValue("invert-match").addValue("https://www.cnblogs.com/drjava/p/10547891.html");
         TableModel tableModel = builder.build();
         TableBuilder tableBuilder = new TableBuilder(tableModel);
         tableBuilder.on(CellMatchers.table()).addSizer(new ChinesSizeConstraints()).and();
