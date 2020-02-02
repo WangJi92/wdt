@@ -65,6 +65,9 @@ arthas
         arthasTrace, at: trace 某个方法的调用栈
         arthasWatch, aw: watch 某个方法的入参返回值
 
+docker
+        dockerTable: dockerTable 导航
+
 ip
         ip: 获取本机ip地址信息
 
@@ -74,8 +77,20 @@ jvm
 log
         logTable: logTable 导航
 
+mvn
+        mavenDependencyTree, md: mavenDependencyTree
+        mavenInstall, mi: maven clean install skip test
+
 ognl
         ognlTable: ognl 学习
+
+port
+        lsof, portLsof:  lsof -i:端口号 用于查看某一端口的占用情况
+        netstat, portNetstat: netstat -tunlp | grep 端口号 用于查看某一端口的占用情况(mac 不支持)
+
+rpc
+        dt, dubboTelnet: dubbo telnet 查询服务信息
+        hsfTelnet, ht: 可以通过执行telnet localhost 12201 ,进入Pandora 的控制台(cd hsf)
 
 system
         ls: 系统ls
