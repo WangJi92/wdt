@@ -11,7 +11,7 @@ import org.springframework.shell.standard.ShellMethod;
  * @author jet
  * @date 09-12-2019
  */
-@ShellComponent(value = "hsf or dubbo 一些常见的命令信息")
+@ShellComponent(value = "hsf or dubbo  telnet命令")
 @ShellCommandGroup(value = "rpc")
 public class RpcDubboHsfCommand {
 
@@ -22,7 +22,7 @@ public class RpcDubboHsfCommand {
      *
      * @return
      */
-    @ShellMethod(value = "dubbo telnet 查询服务信息", key = {"dubboTelnet", "dt"})
+    @ShellMethod(value = "dubbo telnet 查询服务信息", key = {"dubbo-telnet", "dt"})
     public String dubboTelnet() {
         String command = " telnet localhost 20880";
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, command + " link: http://dubbo.apache.org/zh-cn/docs/user/references/telnet.html");
@@ -34,9 +34,10 @@ public class RpcDubboHsfCommand {
     /**
      * hsf 查询信息
      * hsf:https://www.alibabacloud.com/help/zh/doc-detail/100087.htm
+     *
      * @return
      */
-    @ShellMethod(value = "可以通过执行telnet localhost 12201 ,进入Pandora 的控制台(cd hsf)", key = {"hsfTelnet", "ht"})
+    @ShellMethod(value = "可以通过执行telnet localhost 12201 ,进入Pandora 的控制台(cd hsf)", key = {"hsf-telnet", "ht"})
     public String hsfTelnet() {
         String command = " telnet localhost 12201";
         String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, command + " link: https://help.aliyun.com/knowledge_detail/68931.html?spm=5176.13394938.0.0.3d0f6e52dGHjLC");

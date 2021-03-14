@@ -8,11 +8,12 @@ import org.springframework.shell.table.*;
 
 /**
  * vim 使用归档
+ *
  * @author jet
  * @date 25-11-2019
  */
 @ShellComponent
-@ShellCommandGroup(value = "vim")
+@ShellCommandGroup(value = "vim 使用记忆")
 public class VimCommand {
 
     @ShellMethod(value = "vimTable 删除撤销", key = {"vimTableDeleteUndo"})
