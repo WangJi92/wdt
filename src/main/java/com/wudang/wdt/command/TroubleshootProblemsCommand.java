@@ -147,4 +147,28 @@ public class TroubleshootProblemsCommand {
         return formatStr;
     }
 
+    /**
+     * 远程复制命令
+     */
+    @ShellMethod(value = "本地文件复制到远程 scp -r 源目录 用户名@ip:目标目录", key = {"scp"})
+    public void scp() {
+        try {
+            systemCommand.systemCommand("cheat scp");
+            System.out.println("\n");
+
+        } catch (Exception e) {
+            //
+        }
+    }
+
+    /**
+     * linux 性能优化的常见解法地址
+     */
+    @ShellMethod(value = "Linux Performance 图片地址", key = {"linux-performance-pic", "lp"})
+    public void linuxPerformancePic() {
+        System.out.println("性能优化参考图片: http://www.brendangregg.com/Perf/linux_observability_tools.png");
+        System.out.println("一般Linux性能调优都用什么工具？ https://www.zhihu.com/question/448362493/answer/1770329163");
+    }
+
+
 }
