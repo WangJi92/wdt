@@ -25,7 +25,7 @@ public class RpcDubboHsfCommand {
     @ShellMethod(value = "dubbo telnet 查询服务信息", key = {"dubbo-telnet", "dt"})
     public String dubboTelnet() {
         String command = " telnet localhost 20880";
-        String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, command + " link: http://dubbo.apache.org/zh-cn/docs/user/references/telnet.html");
+        String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, command + " link: https://dubbo.apache.org/zh/docs/v2.7/user/references/telnet/");
         ClipboardUtils.setClipboardString(command);
         return formatStr;
     }
