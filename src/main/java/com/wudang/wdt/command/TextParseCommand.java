@@ -23,7 +23,7 @@ import java.util.List;
  * @author 汪小哥
  * @date 22-08-2021
  */
-@ShellComponent(value = "字符串解析,使用场景Excel 获取列数据复制到剪切板后构造写SQl->列表转换为构造SQL的格式")
+@ShellComponent(value = "字符串解析,使用场景Excel 获取列数据复制到剪切板后构造写SQl->列表转换为构造SQL的格式 eg (a,b,c)")
 @ShellCommandGroup(value = "TextParse")
 public class TextParseCommand {
     /**

@@ -4,3 +4,4 @@
     ctrl+u = 清除当前行的光标     exit or quit 退出
     tab 自动补全                 help  帮助
     help+command 帮助具体的命令
+    textParse  字符串解析,使用场景Excel 获取列数据复制到剪切板后构造写SQl->列表转换为构造SQL的格式 eg (a,b,c)
