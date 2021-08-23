@@ -25,11 +25,11 @@ import java.util.List;
  */
 @ShellComponent(value = "字符串解析,使用场景Excel 获取列数据复制到剪切板后构造写SQl->列表转换为构造SQL的格式")
 @ShellCommandGroup(value = "TextParse")
-public class StringParseCommand {
+public class TextParseCommand {
     /**
      * 缓存的数据
      */
-    public static ParseListData data = new ParseListData();
+    private static ParseListData data = new ParseListData();
 
 
     @ShellMethod(value = "字符串解析方便构造从Excel中复制的列数据构造sql", key = {"textParse", "tp"})
@@ -37,13 +37,20 @@ public class StringParseCommand {
             @ShellOption(help = "删除第一个数据", value = {"--removeHead"}) boolean removeHead,
             @ShellOption(help = "删除最后一个数据", value = {"--removeTail"}) boolean removeTail,
             @ShellOption(help = "展示当前的数据", value = {"--show"}) boolean show,
+            @ShellOption(help = "清空缓存(包含剪切板数据)", value = {"--clear"}) boolean clear,
             @ShellOption(help = "separator 分割符默认换行符", value = {"-separator"}, defaultValue = "\n") String separator,
             @ShellOption(help = "数据连接表达式", value = {"-joinType"}, defaultValue = "dataJoinAuto", valueProvider = TextParseValuesProvider.class) String joinType,
-            @ShellOption(help = "解析后的数据连接加上小挎号", value = {"--joinWithParentheses"}, defaultValue = "true") boolean joinWithParentheses) {
+            @ShellOption(help = "解析后的数据连接不添加小括号", value = {"--joinWithOutParentheses"}) boolean joinWithOutParentheses) {
 
         String readyToParseStr = ClipboardUtils.getClipboardString();
-        if (StringUtils.hasText(readyToParseStr) && !readyToParseStr.startsWith("(")) {
+        //增加打标，打标的数据证明被解析过不能二次处理了
+        if (StringUtils.hasText(readyToParseStr) && !readyToParseStr.endsWith(ParseListData.FLAG)) {
             data = new ParseListData(readyToParseStr, separator);
+        }
+        if (clear) {
+            data.clear();
+            ClipboardUtils.setClipboardString("");
+            return data.getShowView() + " after clear";
         }
         if (show) {
             return data.getShowView();
@@ -55,11 +62,15 @@ public class StringParseCommand {
             data.removeTail();
         }
         String joinData = data.getJoinData(joinType);
-        if (joinWithParentheses && StringUtils.hasText(joinData)) {
-            joinData = "(" + joinData + ")";
+        String formatStr = "当前缓存被解析的数据为空,请先复制列表到剪切板在操作。";
+        if (StringUtils.hasText(joinData)) {
+            if (!joinWithOutParentheses) {
+                joinData = "(" + joinData + ")";
+            }
+            joinData = joinData + ParseListData.FLAG;
+            String showJoinDataLittle = joinData.length() < 100 ? joinData + "......" : joinData.substring(0, 100);
+            formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, "解析的数据长度=" + data.getAfterParseListSize() + ",数据缩略信息=" + showJoinDataLittle + ",全量数据信息");
         }
-        String showJoinDataLittle = joinData.length() < 100 ? joinData + "......" : joinData.substring(0, 100);
-        String formatStr = String.format(ClipboardUtils.CLIPBOARD_TEXT, "解析的数据" + showJoinDataLittle);
         ClipboardUtils.setClipboardString(joinData);
         return formatStr;
     }
@@ -96,7 +107,10 @@ public class StringParseCommand {
      */
     @Data
     public static class ParseListData implements Serializable {
-        public ParseListData() {
+
+        public static final String FLAG = "/*textParse*/";
+
+        ParseListData() {
         }
 
         /**
@@ -105,7 +119,7 @@ public class StringParseCommand {
          * @param sourceData
          * @param separator
          */
-        public ParseListData(String sourceData, String separator) {
+        ParseListData(String sourceData, String separator) {
             this.sourceData = sourceData;
             this.separator = separator;
             if (StringUtils.hasText(sourceData)) {
@@ -126,6 +140,15 @@ public class StringParseCommand {
          * 解析后的数据
          */
         private List<String> afterParseList;
+
+        /**
+         * 清空
+         */
+        public void clear() {
+            this.separator = "";
+            this.sourceData = "";
+            this.afterParseList = null;
+        }
 
         /**
          * 删除头数据
@@ -170,6 +193,18 @@ public class StringParseCommand {
         }
 
         /**
+         * 获取解析的数据的数量
+         *
+         * @return
+         */
+        public int getAfterParseListSize() {
+            if (CollectionUtils.isEmpty(afterParseList)) {
+                return 0;
+            }
+            return afterParseList.size();
+        }
+
+        /**
          * 获取连接处理的数据
          *
          * @param joinType
@@ -183,7 +218,8 @@ public class StringParseCommand {
             switch (joinType) {
 
                 case "dataJoinAuto": {
-                    String dataFirst = afterParseList.get(0);
+                    // excel mac 上复制会加上第一个数据，需要move 掉,这里使用最后一个作为自动化判断的是否添加引号的依据
+                    String dataFirst = afterParseList.get(afterParseList.size() - 1);
                     if (NumberUtils.isDigits(dataFirst)) {
                         joinData = this.getJoinData("dataJoinWithComma");
                     } else {
@@ -198,7 +234,7 @@ public class StringParseCommand {
 
                 }
                 case "dataJoinWithCommaAndSingleQuote": {
-                    joinData = "'" + Joiner.on("',").join(afterParseList) + "'";
+                    joinData = "'" + Joiner.on("','").join(afterParseList) + "'";
                     break;
 
                 }
