@@ -85,7 +85,7 @@ public class TextParseCommand {
         public List<CompletionProposal> complete(MethodParameter parameter, CompletionContext completionContext, String[] hints) {
             List<CompletionProposal> completionProposals = Lists.newArrayList();
             CompletionProposal completionProposal = null;
-            completionProposal = new CompletionProposal("'dataJoinAuto");
+            completionProposal = new CompletionProposal("dataJoinAuto");
             completionProposal.dontQuote(true).description("自动识别，是数字不需要单引号,是字符串增加单引号");
             completionProposals.add(completionProposal);
 
